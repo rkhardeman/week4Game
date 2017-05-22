@@ -50,15 +50,16 @@ $(".linkImage").on("click", function(){
 
 		// if score equals target rupees increment wins and reset game
 		if (score == targetRupee){
-			alert("You Win!");
+			alert("You've saved Hyrule and you are a real hero! :)");
 			wins ++;
 			document.querySelector('.wins').innerHTML = "Wins: " + wins;
+
 			resetAll();
 		// if score exceeds target rupees increment losses and reset game
 		} else if (score > targetRupee){
-			alert("You lose!");
+			alert("Game Over! Ganon has returned! :(");
 			losses ++;
-			document.querySelector('.losses').innerHTML = "Losses: " + losses;
+			document.querySelector(".losses").innerHTML = "Losses: " + losses;
 			resetAll();
 		}
 });
