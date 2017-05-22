@@ -1,5 +1,5 @@
-var loss= 0;
-var win= 0;
+var losses= 0;
+var wins= 0;
 var score = 0;
 //define possible targets here
 var randomRupee = [10, 50, 153, 23, 207, 17];
@@ -11,16 +11,18 @@ var numberOptions = [1, 10, 20, 50];
 var targetRupee = randomRupee[Math.floor(Math.random() * randomRupee.length)]
 $("#target").text(targetRupee);
 
-$("#wins").text(win);
+$("#wins").text(wins);
+$("#losses").text(losses);
 
 $("#user-score").text(score);
 
 var updateTargetRupee = function() {
-  targetRupee = randomRupee[Math.floor(Math.random() * randomRupee.length)];
+  targetRupee = randomRupee[Math.floor(Math.random() * randomRupee.length)]
+  $("#target").text(targetRupee);
 };
 
 var resetAll = function() {
-	var score = 0;
+	score = 0;
 	updateTargetRupee();
 };
 
@@ -42,11 +44,14 @@ $(".linkImage").on("click", function(){
 
 		if (score == targetRupee){
 			alert("You Win!");
-			win++;
-			resetAll()
-		} else if (score >= targetRupee){
+			wins ++;
+			document.querySelector('.wins').innerHTML = "Wins: " + wins;
+			resetAll();
+		} else if (score > targetRupee){
 			alert("You lose!");
-			loss++;
+			losses ++;
+			document.querySelector('.losses').innerHTML = "Losses: " + losses;
+			resetAll();
 		}
 });
 
